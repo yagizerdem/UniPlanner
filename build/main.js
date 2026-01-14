@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var electron_1 = require("electron");
 var Main = /** @class */ (function () {
     function Main() {
     }
@@ -14,7 +15,12 @@ var Main = /** @class */ (function () {
     };
     Main.onReady = function () {
         Main.mainWindow = new Main.BrowserWindow({ width: 800, height: 600 });
-        Main.mainWindow.loadURL("file://" + __dirname + "/index.html");
+        if (electron_1.app.isPackaged) {
+            Main.mainWindow.loadURL("file://" + __dirname + "/index.html");
+        }
+        else {
+            Main.mainWindow.loadURL("http://localhost:5173");
+        }
         Main.mainWindow.on("closed", Main.onClose);
     };
     Main.main = function (app, browserWindow) {
