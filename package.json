@@ -1,17 +1,18 @@
 {
   "name": "uniplanner",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./build/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "tsc && electron ."
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "electorn": "^0.0.1-security"
+    "electron": "^39.2.7"
   },
   "devDependencies": {
-    "@types/electron": "^1.4.38"
+    "@types/node": "^18.19.130"
   }
 }
