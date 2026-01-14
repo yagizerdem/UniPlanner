@@ -1,7 +1,11 @@
-import { Fragment } from "react/jsx-runtime";
+import { AppLayout } from "./layout/app";
 
 function App() {
-  return <Fragment>slajd</Fragment>;
+  return (
+    <AppLayout>
+      <div>jalfj</div>
+    </AppLayout>
+  );
 }
 
 export default App;
