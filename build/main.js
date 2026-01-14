@@ -17,7 +17,11 @@ var Main = /** @class */ (function () {
         Main.mainWindow = new Main.BrowserWindow({
             width: 800,
             height: 600,
-            webPreferences: { nodeIntegration: true, contextIsolation: false },
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: true,
+                preload: __dirname + "/preload.js",
+            },
             frame: false,
         });
         if (electron_1.app.isPackaged) {
