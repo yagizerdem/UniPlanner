@@ -1,0 +1,48 @@
+{
+  "name": "uniplanner",
+  "version": "1.0.0",
+  "description": "A desktop app for university students to manage productivity - includes chronometer, countdown timer, note-taking app, event planner and more",
+  "main": "main.js",
+  "scripts": {
+    "dev": "NODE_ENV=development vite",
+    "build": "vite build",
+    "electron": "NODE_ENV=development electron .",
+    "electron:dev": "NODE_ENV=development electron .",
+    "package": "electron-builder",
+    "start": "npm run dev"
+  },
+  "keywords": ["productivity", "university", "student", "planner", "timer", "notes", "events"],
+  "author": "yagizerdem",
+  "license": "ISC",
+  "build": {
+    "appId": "com.uniplanner.app",
+    "productName": "UniPlanner",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.4.0",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
