@@ -1,4 +1,5 @@
 import { BrowserWindow, app } from "electron";
+import path = require("path/win32");
 
 export default class Main {
   static mainWindow: Electron.BrowserWindow;
@@ -19,11 +20,17 @@ export default class Main {
     Main.mainWindow = new Main.BrowserWindow({
       width: 800,
       height: 600,
-      webPreferences: { nodeIntegration: true, contextIsolation: false },
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: true,
+        preload: path.join(__dirname, "preload.js"),
+      },
       frame: false,
     });
     if (app.isPackaged) {
-      Main.mainWindow.loadURL("file://" + __dirname + "/index.html");
+      Main.mainWindow.loadURL(
+        "file://" + __dirname + "/frontend" + "/index.html"
+      );
     } else {
       Main.mainWindow.loadURL("http://localhost:5173");
     }
