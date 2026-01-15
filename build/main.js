@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
+var path = require("path/win32");
 var Main = /** @class */ (function () {
     function Main() {
     }
@@ -20,15 +21,20 @@ var Main = /** @class */ (function () {
             webPreferences: {
                 nodeIntegration: true,
                 contextIsolation: true,
+<<<<<<< HEAD
                 preload: __dirname + "/preload.js",
+=======
+                preload: path.join(__dirname, "preload.js"),
+>>>>>>> b120339 (update)
             },
             frame: false,
         });
         if (electron_1.app.isPackaged) {
-            Main.mainWindow.loadURL("file://" + __dirname + "/index.html");
+            Main.mainWindow.loadURL("file://" + __dirname + "/frontend" + "/index.html");
         }
         else {
-            Main.mainWindow.loadURL("http://localhost:5173");
+            Main.mainWindow.loadURL("file://" + __dirname + "/frontend" + "/index.html");
+            // Main.mainWindow.loadURL("http://localhost:5173");
         }
         Main.mainWindow.on("closed", Main.onClose);
     };
