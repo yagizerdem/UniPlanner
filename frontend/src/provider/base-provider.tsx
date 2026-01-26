@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { ThemeProvider } from "./theme-provider";
+import { TimerProvider } from "./timer-provider";
 
 type BaseProviderProps = {
   children: React.ReactNode;
@@ -12,7 +13,9 @@ const BaseProviderContext = createContext<BaseProviderState>({});
 export function BaseProvider({ children, ...props }: BaseProviderProps) {
   return (
     <BaseProviderContext.Provider {...props} value={undefined}>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <TimerProvider>{children}</TimerProvider>
+      </ThemeProvider>
     </BaseProviderContext.Provider>
   );
 }
