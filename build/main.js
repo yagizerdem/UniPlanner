@@ -25,7 +25,7 @@ var Main = /** @class */ (function () {
             frame: false,
         });
         if (electron_1.app.isPackaged) {
-            Main.mainWindow.loadURL("file://" + __dirname + "/index.html");
+            Main.mainWindow.loadURL("file://" + __dirname + "/frontend" + "/index.html");
         }
         else {
             Main.mainWindow.loadURL("http://localhost:5173");

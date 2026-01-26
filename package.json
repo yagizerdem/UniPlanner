@@ -1,28 +1,10 @@
 {
   "name": "uniplanner",
-<<<<<<< HEAD
-  "version": "1.0.0",
-  "main": "./build/app.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "tsc && electron ."
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "electron": "^39.2.7"
-  },
-  "devDependencies": {
-    "@types/node": "^18.19.130"
-=======
   "version": "0.0.1",
   "main": "./build/app.js",
   "scripts": {
     "build": "tsc",
-    "start": "electron-forge start",
-    "make": "electron-forge make",
-    "package": "electron-forge package"
+    "start": "npm run build && electron ."
   },
   "author": "Yagiz Erdem",
   "license": "ISC",
@@ -41,6 +23,5 @@
     "@electron/fuses": "^1.8.0",
     "@types/node": "^18.19.130",
     "electron": "^39.2.7"
->>>>>>> main
   }
 }

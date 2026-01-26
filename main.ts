@@ -1,8 +1,4 @@
 import { BrowserWindow, app } from "electron";
-<<<<<<< HEAD
-=======
-import path = require("path/win32");
->>>>>>> main
 
 export default class Main {
   static mainWindow: Electron.BrowserWindow;
@@ -31,13 +27,9 @@ export default class Main {
       frame: false,
     });
     if (app.isPackaged) {
-<<<<<<< HEAD
-      Main.mainWindow.loadURL("file://" + __dirname + "/index.html");
-=======
       Main.mainWindow.loadURL(
-        "file://" + __dirname + "/frontend" + "/index.html"
+        "file://" + __dirname + "/frontend" + "/index.html",
       );
->>>>>>> main
     } else {
       Main.mainWindow.loadURL("http://localhost:5173");
     }
