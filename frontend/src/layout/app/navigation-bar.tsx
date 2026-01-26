@@ -28,7 +28,11 @@ export function NavigationBar() {
       >
         Timer <ClockIcon />
       </Button>
-      <Button className="w-3/4 mx-auto cursor-pointer" variant={"outline"}>
+      <Button
+        className="w-3/4 mx-auto cursor-pointer"
+        variant={"outline"}
+        onMouseUp={() => navigate("/notes")}
+      >
         Notes <NotebookIcon />
       </Button>
       <Button className="w-3/4 mx-auto cursor-pointer" variant={"outline"}>
