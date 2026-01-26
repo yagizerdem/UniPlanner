@@ -1,5 +1,6 @@
 {
   "name": "uniplanner",
+<<<<<<< HEAD
   "version": "1.0.0",
   "main": "./build/app.js",
   "scripts": {
@@ -14,5 +15,32 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.130"
+=======
+  "version": "0.0.1",
+  "main": "./build/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "electron-forge start",
+    "make": "electron-forge make",
+    "package": "electron-forge package"
+  },
+  "author": "Yagiz Erdem",
+  "license": "ISC",
+  "description": "Productivity app for university students.",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.1",
+    "@electron-forge/maker-deb": "^7.11.1",
+    "@electron-forge/maker-rpm": "^7.11.1",
+    "@electron-forge/maker-squirrel": "^7.11.1",
+    "@electron-forge/maker-zip": "^7.11.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.11.1",
+    "@electron-forge/plugin-fuses": "^7.11.1",
+    "@electron/fuses": "^1.8.0",
+    "@types/node": "^18.19.130",
+    "electron": "^39.2.7"
+>>>>>>> main
   }
 }

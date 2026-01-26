@@ -15,7 +15,7 @@ export function Header() {
   }
 
   return (
-    <div className="w-full h-12 bg-card flex flex-row items-center drag justify-end gap-2 px-4">
+    <div className="w-full h-12 py-4 bg-card flex flex-row items-center drag justify-end gap-2 px-4">
       <Button
         variant={"default"}
         className="no-drag cursor-pointer"

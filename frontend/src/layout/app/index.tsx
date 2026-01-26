@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTheme } from "../../provider/theme-provider";
 import { Header } from "./header";
+import { NavigationBar } from "./navigation-bar";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const { setTheme } = useTheme();
@@ -10,9 +11,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen flex flex-col overflow-hidden ">
       <Header />
-      {children}
+      <div className="w-full h-full flex flex-row">
+        <NavigationBar />
+        {children}
+      </div>
     </div>
   );
 }
