@@ -1,3 +1,9 @@
+import { Header } from "./header";
+
 export function Notes() {
-  return <div className="w-full h-full bg-red-500">Notes Component</div>;
+  return (
+    <div className="w-full h-full bg-background ">
+      <Header />
+    </div>
+  );
 }
