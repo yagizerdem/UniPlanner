@@ -1,25 +1,27 @@
-import type { Moment } from "moment";
+import type { Duration } from "moment";
 import moment from "moment";
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 type TimerProviderProps = {
   children: React.ReactNode;
 };
 
 type TimerProviderState = {
-  time: Moment;
-  setTime: (time: Moment) => void;
+  time: Duration;
+  setTime: React.Dispatch<React.SetStateAction<Duration>>;
 };
 
 const initialState: TimerProviderState = {
-  time: moment().add(0, "milliseconds"),
+  time: moment.duration(0, "milliseconds"),
   setTime: () => null,
 };
 
 const TimerProviderContext = createContext<TimerProviderState>(initialState);
 
 export function TimerProvider({ children, ...props }: TimerProviderProps) {
-  const [time, setTime] = useState<Moment>(moment().add(0, "milliseconds"));
+  const [time, setTime] = useState<Duration>(
+    moment.duration(0, "milliseconds"),
+  );
 
   const value = {
     time,
