@@ -11,25 +11,37 @@ export function SoundConfiguration() {
       </Button>
       <Button
         variant="outline"
-        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-1 hover:!bg-chart-1/40"
+        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-2 hover:!bg-chart-2/40"
       >
         config
       </Button>
       <Button
         variant="outline"
-        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-1 hover:!bg-chart-1/40"
+        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-2 hover:!bg-chart-2/40"
       >
         config
       </Button>
       <Button
         variant="outline"
-        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-1 hover:!bg-chart-1/40"
+        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-2 hover:!bg-chart-2/40"
       >
         config
       </Button>
       <Button
         variant="outline"
-        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-1 hover:!bg-chart-1/40"
+        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-2 hover:!bg-chart-2/40"
+      >
+        config
+      </Button>
+      <Button
+        variant="outline"
+        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-2 hover:!bg-chart-2/40"
+      >
+        config
+      </Button>
+      <Button
+        variant="outline"
+        className="w-36 font-bold text-foreground cursor-pointer transition-colors !bg-chart-2 hover:!bg-chart-2/40"
       >
         config
       </Button>
