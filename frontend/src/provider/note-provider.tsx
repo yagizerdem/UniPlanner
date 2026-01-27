@@ -17,7 +17,7 @@ const initialState: NoteProviderState = {
 const NoteProviderContext = createContext<NoteProviderState>(initialState);
 
 export function NoteProvider({ children, ...props }: NoteProviderProps) {
-  const [showNewNotePopup, setShowNewNotePopup] = useState(true);
+  const [showNewNotePopup, setShowNewNotePopup] = useState(false);
 
   const value = { showNewNotePopup, setShowNewNotePopup };
 

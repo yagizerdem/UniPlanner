@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import { NewNotePopup } from "../../components/notes/popup/newnote-popup";
 import { useNote } from "../../provider/note-provider";
 import { Header } from "./header";
@@ -15,6 +16,7 @@ export function DefaultLayout({ children }: PopoutLayoutProps) {
         {showNewNotePopup && <NewNotePopup />}
         {children}
       </div>
+      <Toaster />
     </div>
   );
 }

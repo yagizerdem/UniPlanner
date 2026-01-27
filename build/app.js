@@ -51,7 +51,7 @@ electron_1.app.whenReady().then(function () { return __awaiter(void 0, void 0, v
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 6, , 7]);
+                _a.trys.push([0, 7, , 8]);
                 return [4 /*yield*/, (0, app_init_1.createRootFolders)()];
             case 1:
                 _a.sent();
@@ -65,13 +65,16 @@ electron_1.app.whenReady().then(function () { return __awaiter(void 0, void 0, v
                 return [4 /*yield*/, (0, app_init_1.setupOllama)()];
             case 4:
                 _a.sent();
-                _a.label = 5;
-            case 5: return [3 /*break*/, 7];
-            case 6:
+                return [3 /*break*/, 6];
+            case 5:
+                console.log("Ollama is already installed.");
+                _a.label = 6;
+            case 6: return [3 /*break*/, 8];
+            case 7:
                 err_1 = _a.sent();
                 console.error("Error during Ollama setup:", err_1);
-                return [3 /*break*/, 7];
-            case 7: return [2 /*return*/];
+                return [3 /*break*/, 8];
+            case 8: return [2 /*return*/];
         }
     });
 }); });
