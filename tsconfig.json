@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -8,7 +8,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
+    "esModuleInterop": true,
     "outDir": "./build"
   },
-  "exclude": ["node_modules", "frontend", "dist", "build"]
+  "exclude": ["node_modules", "frontend", "dist", "build", "__tests__"]
 }

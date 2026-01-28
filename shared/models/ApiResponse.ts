@@ -1,14 +1,5 @@
-type ApiSuccess<T> = {
-  ok: true;
+export interface ApiResponse<T> {
+  ok: boolean;
   data: T;
-};
-
-type ApiError = {
-  ok: false;
-  error: {
-    code: string;
-    message: string;
-  };
-};
-
-export type ApiResponse<T> = ApiSuccess<T> | ApiError;
+  message: string;
+}

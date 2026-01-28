@@ -5,15 +5,17 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && electron .",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "Yagiz Erdem",
   "license": "ISC",
   "description": "Productivity app for university students.",
   "dependencies": {
+    "@types/uuid": "^10.0.0",
     "axios": "^1.13.4",
     "electron-squirrel-startup": "^1.0.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
@@ -27,6 +29,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.11.1",
     "@electron-forge/plugin-fuses": "^7.11.1",
     "@electron/fuses": "^1.8.0",
+    "@faker-js/faker": "^10.2.0",
     "@jest/globals": "^30.2.0",
     "@types/node": "^18.19.130",
     "babel-jest": "^30.2.0",
