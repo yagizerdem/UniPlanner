@@ -1,6 +1,8 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import Main from "./main";
 import * as windowController from "./controller/windowController";
+import * as noteController from "./controller/noteController";
+import { Note } from "./shared/models/Note";
 import {
   checkOllamaInstalled,
   createRootFolders,
@@ -16,6 +18,11 @@ app.whenReady().then(() => {
   ipcMain.handle("maximize", () => windowController.maximize());
 });
 
+app.whenReady().then(() => {
+  ipcMain.handle("readNotes", () => noteController.readNotes());
+  ipcMain.handle("saveNotes", (data: Note[]) => noteController.saveNotes(data));
+});
+
 app.whenReady().then(async () => {
   try {
     await createRootFolders();
@@ -23,12 +30,10 @@ app.whenReady().then(async () => {
     if (!installed) {
       await downloadOllama();
       await setupOllama();
-    } 
-    else {
+    } else {
       console.log("Ollama is already installed.");
     }
-  }
-  catch (err) {
-      console.error("Error during Ollama setup:", err);
+  } catch (err) {
+    console.error("Error during Ollama setup:", err);
   }
 });
