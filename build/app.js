@@ -38,12 +38,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
 const main_1 = __importDefault(require("./main"));
 const windowController = __importStar(require("./controller/windowController"));
+const noteController = __importStar(require("./controller/noteController"));
 const app_init_1 = require("./app_init");
 main_1.default.main(electron_1.app, electron_1.BrowserWindow);
 electron_1.app.whenReady().then(() => {
     electron_1.ipcMain.handle("close", () => windowController.close());
     electron_1.ipcMain.handle("minimize", () => windowController.minimize());
     electron_1.ipcMain.handle("maximize", () => windowController.maximize());
+});
+electron_1.app.whenReady().then(() => {
+    electron_1.ipcMain.handle("readNotes", () => noteController.readNotes());
+    electron_1.ipcMain.handle("saveNotes", (event, data) => noteController.saveNotes(data));
 });
 electron_1.app.whenReady().then(() => __awaiter(void 0, void 0, void 0, function* () {
     try {

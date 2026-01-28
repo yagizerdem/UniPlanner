@@ -8,6 +8,8 @@ import { Input } from "../../ui/input";
 import { Field, FieldGroup, FieldLabel } from "../../ui/field";
 import { Button } from "../../ui/button";
 import { Calendar } from "../../ui/calendar";
+import { type Note } from "../../../../../shared/models/Note";
+import { v4 as uuidv4 } from "uuid";
 import {
   Popover,
   PopoverContent,
@@ -15,11 +17,13 @@ import {
 } from "@radix-ui/react-popover";
 import { format } from "date-fns";
 import { toast } from "sonner";
+import type { ApiResponse } from "../../../../../shared/models/ApiResponse";
+import { el } from "date-fns/locale";
 
 export function NewNotePopup() {
-  const { setShowNewNotePopup } = useNote();
+  const { setShowNewNotePopup, setNotes, notes } = useNote();
   const cardRef = useRef<HTMLDivElement>(null);
-  const [date, setDate] = useState<Date | null>(null);
+  const [remainder, setRemainder] = useState<Date | null>(null);
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
@@ -54,13 +58,43 @@ export function NewNotePopup() {
     }
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (title.trim() === "") {
       toast.error("Title cannot be empty", {
         duration: 2000,
         position: "top-right",
       });
+      return;
     }
+
+    const newNote: Note = {
+      completed: false,
+      content: content,
+      title: title,
+      id: uuidv4(),
+      createdAt: new Date(),
+      remainder,
+      updatedAt: new Date(),
+    };
+    const newNotes = [newNote, ...notes];
+
+    const respnose: ApiResponse<void> =
+      await window.noteController.saveNotes(newNotes);
+    if (respnose.ok) {
+      setNotes(newNotes);
+
+      toast.success("Note created successfully", {
+        duration: 2000,
+        position: "top-right",
+      });
+    } else {
+      toast.error(respnose.message || "Failed to create the note.", {
+        duration: 2000,
+        position: "top-right",
+      });
+    }
+
+    onClose();
   }
 
   return (
@@ -109,25 +143,29 @@ export function NewNotePopup() {
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
-                      data-empty={!date}
+                      data-empty={!remainder}
                       className="data-[empty=true]:text-muted-foreground w-[212px] justify-between text-left font-normal"
                     >
-                      {date ? format(date, "PPP") : <span>Pick a date</span>}
+                      {remainder ? (
+                        format(remainder, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
                       <ChevronDownIcon />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
                     <Calendar
                       mode="single"
-                      selected={date ?? undefined}
-                      onSelect={setDate}
-                      defaultMonth={date ?? undefined}
+                      selected={remainder ?? undefined}
+                      onSelect={setRemainder}
+                      defaultMonth={remainder ?? undefined}
                     />
                   </PopoverContent>
                 </Popover>
                 <TrashIcon
                   className="cursor-pointer"
-                  onMouseUp={() => setDate(null)}
+                  onMouseUp={() => setRemainder(null)}
                 />
               </div>
             </Field>

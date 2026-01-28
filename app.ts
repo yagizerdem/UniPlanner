@@ -20,7 +20,9 @@ app.whenReady().then(() => {
 
 app.whenReady().then(() => {
   ipcMain.handle("readNotes", () => noteController.readNotes());
-  ipcMain.handle("saveNotes", (data: Note[]) => noteController.saveNotes(data));
+  ipcMain.handle("saveNotes", (event, data: Note[]) =>
+    noteController.saveNotes(data),
+  );
 });
 
 app.whenReady().then(async () => {
