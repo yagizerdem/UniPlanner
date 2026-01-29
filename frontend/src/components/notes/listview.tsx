@@ -22,6 +22,9 @@ import type { ApiResponse } from "../../../../shared/models/ApiResponse";
 import { toast } from "sonner";
 import { memo } from "react";
 import type { Note } from "../../../../shared/models/Note";
+import { Checkbox } from "@radix-ui/react-checkbox";
+import { Field, FieldGroup, FieldLabel } from "../ui/field";
+import { cn } from "../../lib/utils";
 
 interface NotesListViewProps {
   setModified: (modified: boolean) => void;
@@ -77,7 +80,12 @@ const NoteItem = memo(function NoteItem({
       >
         <AccordionItem value="item-1">
           <AccordionTrigger className="cursor-pointer">
-            <Label className="font-bold text-xl select-none ">
+            <Label
+              className={cn(
+                "font-bold text-xl select-none",
+                note.completed ? "line-through" : "",
+              )}
+            >
               {note.title}
             </Label>
           </AccordionTrigger>
@@ -92,9 +100,8 @@ const NoteItem = memo(function NoteItem({
                   setNotes(updatedNotes);
                   setModified(true);
                 }}
-              >
-                {note.content}
-              </Textarea>
+                defaultValue={note.content}
+              />
               <div className="flex flex-row items-center gap-2">
                 <Dialog>
                   <DialogTrigger asChild>
@@ -130,46 +137,29 @@ const NoteItem = memo(function NoteItem({
                     </div>
                   </DialogContent>
                 </Dialog>
-                <label className="flex items-center cursor-pointer gap-2">
+                <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="peer hidden"
-                    checked={note.completed}
-                    onChange={(e) => {
-                      setNotes((prev) =>
-                        prev.map((n) =>
-                          n.id === note.id
-                            ? { ...n, completed: e.target.checked }
-                            : n,
-                        ),
+                    id="completed"
+                    className="cursor-pointer"
+                    defaultChecked={note.completed}
+                    onMouseUp={() => {
+                      const updatedNotes = notes.map((n) =>
+                        n.id === note.id
+                          ? { ...n, completed: !n.completed }
+                          : n,
                       );
+                      setNotes(updatedNotes);
                       setModified(true);
                     }}
                   />
-
-                  <div
-                    className="
-      w-6 h-6 rounded-md
-      border border-muted-foreground
-      flex items-center justify-center
-      transition-all
-      peer-checked:bg-primary
-      peer-checked:border-primary
-    "
+                  <label
+                    htmlFor="completed"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    <svg
-                      className="w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </div>
-                </label>
+                    Mark as completed
+                  </label>
+                </div>
               </div>
             </div>
           </AccordionContent>

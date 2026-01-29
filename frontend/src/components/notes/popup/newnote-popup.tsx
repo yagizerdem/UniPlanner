@@ -19,6 +19,7 @@ import { format } from "date-fns";
 import { toast } from "sonner";
 import type { ApiResponse } from "../../../../../shared/models/ApiResponse";
 import { el } from "date-fns/locale";
+import { Textarea } from "../../ui/textarea";
 
 export function NewNotePopup() {
   const { setShowNewNotePopup, setNotes, notes } = useNote();
@@ -99,14 +100,14 @@ export function NewNotePopup() {
 
   return (
     <Fragment>
-      <div className="absolute inset-0 top-0 left-0 w-full h-full flex flex-row items-center justify-between align-middlez-99">
+      <div className="absolute  inset-0 top-0 left-0 w-full h-full flex flex-row items-center justify-between align-middlez-99">
         <div
           className="absolute inset-0 bg-black opacity-40 w-full h-full z-99 select-none"
           onMouseUp={() => onClose()}
         />
         <Card
           ref={cardRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 w-96 select-none  z-100"
+          className="absolute max-h-140 overflow-y-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 w-96 select-none  z-100"
         >
           <h2 className="text-2xl font-semibold  flex flex-row justify-end">
             <XIcon className="cursor-pointer" onMouseUp={() => onClose()} />
@@ -124,9 +125,8 @@ export function NewNotePopup() {
             </Field>
             <Field>
               <FieldLabel htmlFor="input-content">Enter Content</FieldLabel>
-              <Input
+              <Textarea
                 id="input-content"
-                type="text"
                 placeholder="This is my first note content"
                 onChange={(e) => setContent(e.currentTarget.value)}
               />
