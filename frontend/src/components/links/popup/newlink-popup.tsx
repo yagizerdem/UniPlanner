@@ -7,8 +7,11 @@ import { Input } from "../../ui/input";
 import { Field, FieldGroup, FieldLabel } from "../../ui/field";
 import { Button } from "../../ui/button";
 import { useLink } from "../../../provider/link-provider";
+import { useApp } from "../../../provider/app-provider";
+import { toast } from "sonner";
 
 export function NewLinkPopup() {
+  const { setIsLoading } = useApp();
   const { setShowNewLinkPopup, showNewLinkPopup } = useLink();
   const cardRef = useRef<HTMLDivElement>(null);
   const [subject, setSubject] = useState<string>("");
@@ -47,7 +50,28 @@ export function NewLinkPopup() {
   }
 
   async function handleSubmit() {
-    onClose();
+    try {
+      setIsLoading(true);
+      if (link.trim().length == 0) {
+        toast.error("Link cannot be empty", {
+          duration: 2000,
+          position: "top-right",
+        });
+        return;
+      }
+      if (subject.trim().length == 0) {
+        toast.error("Subject cannot be empty", {
+          duration: 2000,
+          position: "top-right",
+        });
+        return;
+      }
+    } catch (error) {
+      console.error("Error submitting new link:", error);
+    } finally {
+      setIsLoading(false);
+      onClose();
+    }
   }
 
   return (
