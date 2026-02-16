@@ -22,8 +22,6 @@ import type { ApiResponse } from "../../../../shared/models/ApiResponse";
 import { toast } from "sonner";
 import { memo } from "react";
 import type { Note } from "../../../../shared/models/Note";
-import { Checkbox } from "@radix-ui/react-checkbox";
-import { Field, FieldGroup, FieldLabel } from "../ui/field";
 import { cn } from "../../lib/utils";
 
 interface NotesListViewProps {

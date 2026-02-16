@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import { ThemeProvider } from "./theme-provider";
 import { TimerProvider } from "./timer-provider";
 import { NoteProvider } from "./note-provider";
+import { LinkProvider } from "./link-provider";
 
 type BaseProviderProps = {
   children: React.ReactNode;
@@ -16,7 +17,9 @@ export function BaseProvider({ children, ...props }: BaseProviderProps) {
     <BaseProviderContext.Provider {...props} value={undefined}>
       <ThemeProvider>
         <TimerProvider>
-          <NoteProvider>{children}</NoteProvider>
+          <NoteProvider>
+            <LinkProvider>{children}</LinkProvider>
+          </NoteProvider>
         </TimerProvider>
       </ThemeProvider>
     </BaseProviderContext.Provider>

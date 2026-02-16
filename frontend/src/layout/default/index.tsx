@@ -2,6 +2,8 @@ import { Toaster } from "sonner";
 import { NewNotePopup } from "../../components/notes/popup/newnote-popup";
 import { useNote } from "../../provider/note-provider";
 import { Header } from "./header";
+import { useLink } from "../../provider/link-provider";
+import { NewLinkPopup } from "../../components/links/popup/newlink-popup";
 
 interface PopoutLayoutProps {
   children: React.ReactNode;
@@ -9,15 +11,15 @@ interface PopoutLayoutProps {
 
 export function DefaultLayout({ children }: PopoutLayoutProps) {
   const { showNewNotePopup } = useNote();
+  const { showNewLinkPopup } = useLink();
   return (
     <div className="w-screen h-screen flex flex-col overflow-hidden relative ">
       <div className="flash absolute w-full h-full top-0 left-0 inset-0  z-999999 bg-white"></div>
 
       <Header />
-      <div className="w-full h-full overflow-hidden relative ">
-        {showNewNotePopup && <NewNotePopup />}
-        {children}
-      </div>
+      <div className="w-full h-full overflow-hidden relative ">{children}</div>
+      {showNewNotePopup && <NewNotePopup />}
+      {showNewLinkPopup && <NewLinkPopup />}
       <Toaster />
     </div>
   );

@@ -18,7 +18,6 @@ import {
 import { format } from "date-fns";
 import { toast } from "sonner";
 import type { ApiResponse } from "../../../../../shared/models/ApiResponse";
-import { el } from "date-fns/locale";
 import { Textarea } from "../../ui/textarea";
 
 export function NewNotePopup() {

@@ -35,8 +35,12 @@ export function NavigationBar() {
       >
         Notes <NotebookIcon />
       </Button>
-      <Button className="w-3/4 mx-auto cursor-pointer" variant={"outline"}>
-        Study Material <BookIcon />
+      <Button
+        className="w-3/4 mx-auto cursor-pointer"
+        variant={"outline"}
+        onMouseUp={() => navigate("/links")}
+      >
+        Links <BookIcon />
       </Button>
       <Button className="w-3/4 mx-auto cursor-pointer" variant={"outline"}>
         Events <MailIcon />
